@@ -120,4 +120,8 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 
 ```
 The final element.
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 89ce6bc56f785a18742420ff9e20576779842e98
