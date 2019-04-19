@@ -1,4 +1,6 @@
-# r951236958.github.io
+# This GitHub Page builded by [**Minima Theme**](https://jekyll.github.io/minima/)
+
+## Markdown Usage Example
 
 Text can be **bold**, _italic_, ~~strikethrough~~ or `keyword`.
 
