@@ -29,16 +29,26 @@ layout: home
 
 <!-- /TOC -->
 
-**常用指令備忘錄**
+- 常用指令備忘錄
 
-```sh
-~ $ uname -m #查詢CPU
-~ $ df -h #查詢SD卡容量
-~ $ apt-get update #更新遠端伺服器套件清單
-~ $ apt-get upgrade #更新已安裝套件
-~ $ wget URL #適用於一般小型檔案或文件下載
-~ $ curl -I URL -o /path/to #[-I]可讀取網頁header, [-o]檔案儲放路徑
-```
+    ```sh
+    ~ $ uname -m #查詢CPU
+    ~ $ df -h #查詢SD卡容量
+    ~ $ apt-get update #更新遠端伺服器套件清單
+    ~ $ apt-get upgrade #更新已安裝套件
+    ~ $ wget URL #適用於一般小型檔案或文件下載
+    ~ $ curl -I URL -o /path/to #[-I]可讀取網頁header, [-o]檔案儲放路徑
+    ```
+
+- App檔案已損毀解決方式
+
+    ```sh
+    #方法1. 使用指令開啟app
+    ~ $ sudo xattr -rd com.apple.quarantine /Applications/LockedApp.app #替換為該app路徑
+
+    #方法2. 關閉安全性檢查, 在"安全性與隱私權"中會出現"允許所有來源"
+    ~ $ sudo spctl --master-disable
+    ```
 
 ## SSH遠端連線
 
@@ -66,13 +76,12 @@ layout: home
 
     在預設情況下, 公鑰文件名稱是下列之一:
 
-    * _id_dsa.pub_
-    * _id_ecdsa.pub_
-    * _id_ed25519.pub_
-    * _id_rsa.pub_
-    
-    * 如果沒有現有的公鑰與密鑰, 則可以[生成新的SSH密鑰](#生成新的SSH密鑰)
-    * 如果已有現有的公鑰與密鑰(例如id_rsa.pub和id_rsa), 則可以[將SSH密鑰加入ssh-agent](#將SSH密鑰加入ssh-agent)
+    - _id_dsa.pub_
+    - _id_ecdsa.pub_
+    - _id_ed25519.pub_
+    - _id_rsa.pub_
+    - 如果沒有現有的公鑰與密鑰, 則可以[生成新的SSH密鑰](#生成新的SSH密鑰)
+    - 如果已有現有的公鑰與密鑰(例如id_rsa.pub和id_rsa), 則可以[將SSH密鑰加入ssh-agent](#將SSH密鑰加入ssh-agent)
 
     > 若系統提示 `~/.ssh` 不存在, 將會在[生成新的SSH密鑰](#生成新的SSH密鑰)時創建它
 
@@ -116,7 +125,7 @@ layout: home
 
 2. 如果使用的是macOS Sierra 10.12.2或更高版本, 則需要修改 `~/.ssh/config` 文件以自動將密鑰加載到ssh-agent中並在鑰匙圈中儲存密碼。
 
-    ```
+    ```sh
     Host *
       AddKeysToAgent yes
       UseKeychain yes
@@ -130,7 +139,7 @@ layout: home
     ```
 
     > 注意：該 `-K` 選項是Apple的標準版本 `ssh-add` , 當您向ssh-agent添加ssh密鑰時, 會將鑰匙圈儲存在您的鑰匙串中。
-    > 
+    >
     > 如果您沒有安裝Apple的標準版本, 則可能會收到錯誤訊息。有關解決此錯誤的詳細說明, 請參閱 " [Error: ssh-add: illegal option -- K](#ssh-add -K發生錯誤) "。
 
 #### ssh-add -K發生錯誤
@@ -186,7 +195,7 @@ Options:
 
 scp 指令的語法跟一般的 cp 類似，只不過 scp 可以在不同的 Linux 主機之間複製檔案，其語法為：
 
-```
+```sh
 scp [帳號@來源主機]:來源檔案 [帳號@目的主機]:目的檔案
 ```
 
@@ -198,11 +207,11 @@ scp [帳號@來源主機]:來源檔案 [帳號@目的主機]:目的檔案
 
 常見的權限表示由 ```[-][rwx][r-x][r--]``` 所組成
 
-1. [-] 檔案的屬性 
-    - [ d ] 目錄, 
-    - [ - ] 檔案 , 
-    - [ l ] 連結檔, 
-    - [ b ] 裝置檔裡面的可供儲存的周邊設備 
+1. [-] 檔案的屬性
+    - [ d ] 目錄,
+    - [ - ] 檔案 ,
+    - [ l ] 連結檔,
+    - [ b ] 裝置檔裡面的可供儲存的周邊設備
     - [ c ] 裝置檔裡面的序列埠設備, 例如鍵盤、滑鼠
 2. [rwx] 擁有者的權限
 3. [r-x] 群組的權限
@@ -223,20 +232,20 @@ scp [帳號@來源主機]:來源檔案 [帳號@目的主機]:目的檔案
  rw- | 110 | 6 | 讀/寫
  rwx | 111 | 7 | 讀/寫/執行
 
- **[r]=4, [w]=2, [x]=1, [-]=0**
+ 將[rwx-]轉為十進制數字表示: **[r]=4, [w]=2, [x]=1, [-]=0**
 
 ### 一般常用的權限賦予有以下幾種
 
-```
+```sh
 -rw------- (600) #只有擁有者具有 「讀/寫」 權限
 
--rw-r--r-- (644) #表示擁有者具有 「讀/寫」 權限, 同群組與其他使用者只有 「讀」 的權限
+-rw-r--r-- (644) #表示擁有者具有 「讀/寫」 權限, 同群組與其他使用者只「讀」 的權限
 
 -rwx------ (700) #只有擁有者具有 「讀/寫/執行」 權限
 
--rwxr-xr-x (755) #表示擁有者具有 「讀/寫/執行」 權限, 同群組與其他使用者具有 「讀/執行」 權限
+-rwxr-xr-x (755) #表示擁有者具有 「讀/寫/執行」 權限, 同群組與其他使具有 「讀/執行」 權限
 
--rwx--x--x (711) #表示擁有者具有 「讀/寫/執行」 權限, 同群組與其他使用者具有 「執行」 權限
+-rwx--x--x (711) #表示擁有者具有 「讀/寫/執行」 權限, 同群組與其他使具有 「執行」 權限
 
 -rw-rw-rw- (666) #所有擁有者具有 「讀/寫」 權限
 
@@ -248,15 +257,15 @@ scp [帳號@來源主機]:來源檔案 [帳號@目的主機]:目的檔案
 
 ### 權限變更指令 chgrp chown chmod
 
-* chgrp ：改變檔案所屬群組
-* chown ：改變檔案所屬人
-* chmod ：改變檔案的屬性、 SUID 、等等的特性
+- chgrp ：改變檔案所屬群組
+- chown ：改變檔案所屬人
+- chmod ：改變檔案的屬性、 SUID 、等等的特性
 
 #### chgrp指令說明
 
 ```sh
 ~ $ chgrp [Options] group file ...
-~ $ chgrp [Options] group file ... 
+~ $ chgrp [Options] group file ...
 ~ $ chgrp [Options] --reference=RFILE FILE...
 
 Options:
@@ -346,7 +355,7 @@ WantedBy=multi-user.target
 ~ $ sudo systemctl start SERVICE
 ```
 
-同理, 要暫停、重啟的話, 則改為 `stop` 或 `restart`  查看狀態 `status` 
+同理, 要暫停、重啟的話, 則改為 `stop` 或 `restart`  查看狀態 `status`
 
 要以root權限執行
 
@@ -360,7 +369,7 @@ WantedBy=multi-user.target
     status  #查詢狀態
 ```
 
-服務啟動後 `status` 只會顯示出短短幾行紀錄, 如果要查看完整log則要使用指令 `journalctl` 
+服務啟動後 `status` 只會顯示出短短幾行紀錄, 如果要查看完整log則要使用指令 `journalctl`
 
 ```sh
 # 顯示日誌輸出
@@ -372,8 +381,6 @@ WantedBy=multi-user.target
 # 系統服務重啟後顯示日誌
 ~ $ sudo systemctl restart SERVICE && ~ $ sudo journalctl -f -u SERVICE
 ```
-
-
 
 [github-ssh-link]: https://help.github.com/en/articles/connecting-to-github-with-ssh
 [ssh-passphrase-link]: https://help.github.com/en/articles/working-with-ssh-key-passphrases
