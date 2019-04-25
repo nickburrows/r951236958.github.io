@@ -1,4 +1,4 @@
-# This GitHub Page builded by [**Minima Theme**](https://jekyll.github.io/minima/)
+# This GitHub Page builded by [**Minima Theme**](https://github.com/jekyll/minima)
 
 ## Markdown Usage Example
 
