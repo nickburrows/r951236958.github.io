@@ -1,13 +1,11 @@
 ---
 layout: post
-title: "Linux Note"
+title: "樹莓派與Linux指令與權限說明"
+categories: linux
 ---
-
-## 樹莓派與Linux指令與權限說明
 
 <!-- TOC -->
 
-- [樹莓派與Linux指令與權限說明](#樹莓派與linux指令與權限說明)
 - [SSH遠端連線](#ssh遠端連線)
     - [檢查現有的SSH密鑰](#檢查現有的ssh密鑰)
     - [生成新的SSH密鑰](#生成新的ssh密鑰)
