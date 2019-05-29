@@ -14,10 +14,9 @@ permalink: /about/
 - 配色建議參考網站 [colorion][colorion]
 - [Jekyll配置中文說明][jekyll-guide-chinese]
 
-> 後續有想到其他的再補上
+---
 
-about.md原始內容
--- -
+> about.md原始內容
 
 This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
 
@@ -32,4 +31,4 @@ You can find the source code for Jekyll at GitHub:
 [jekyll-organization]: https://github.com/jekyll
 [colorion]: https://www.colorion.co/
 [favicongenerator]: https://realfavicongenerator.net/
-[jekyll-guide-chinese]: [jekyll-guide]: https://gist.github.com/biezhi/f88be58ef4ae0f3741bb36ab8daa53c5#file-jekyll-guide-md
+[jekyll-guide-chinese]: https://gist.github.com/biezhi/f88be58ef4ae0f3741bb36ab8daa53c5#file-jekyll-guide-md
