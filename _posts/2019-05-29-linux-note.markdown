@@ -9,24 +9,24 @@ categories: linux
 <!-- TOC -->
 
 - [SSH遠端連線](#ssh遠端連線)
-    - [檢查現有的SSH密鑰](#檢查現有的ssh密鑰)
-    - [生成新的SSH密鑰](#生成新的ssh密鑰)
-    - [將SSH密鑰加入ssh-agent](#將ssh密鑰加入ssh-agent)
-        - [ssh-add -K發生錯誤](#ssh-add--k發生錯誤)
-    - [複製SSH公鑰到遠端主機](#複製ssh公鑰到遠端主機)
-        - [ssh-add指令說明](#ssh-add指令說明)
+  - [檢查現有的SSH密鑰](#檢查現有的ssh密鑰)
+  - [生成新的SSH密鑰](#生成新的ssh密鑰)
+  - [將SSH密鑰加入ssh-agent](#將ssh密鑰加入ssh-agent)
+    - [ssh-add -K發生錯誤](#ssh-add--k發生錯誤)
+  - [複製SSH公鑰到遠端主機](#複製ssh公鑰到遠端主機)
+    - [ssh-add指令說明](#ssh-add指令說明)
 - [SCP指令 - 遠端複製檔案與目錄](#scp指令---遠端複製檔案與目錄)
-    - [複製檔案與目錄](#複製檔案與目錄)
+  - [複製檔案與目錄](#複製檔案與目錄)
 - [Linux檔案與目錄權限說明](#linux檔案與目錄權限說明)
-    - [權限組成方式](#權限組成方式)
-    - [權限轉換方式](#權限轉換方式)
-    - [一般常用的權限賦予有以下幾種](#一般常用的權限賦予有以下幾種)
-    - [權限變更指令 chgrp chown chmod](#權限變更指令-chgrp-chown-chmod)
-        - [chgrp指令說明](#chgrp指令說明)
-        - [chown指令說明](#chown指令說明)
-        - [chmod指令說明](#chmod指令說明)
+  - [權限組成方式](#權限組成方式)
+  - [權限轉換方式](#權限轉換方式)
+  - [一般常用的權限賦予有以下幾種](#一般常用的權限賦予有以下幾種)
+  - [權限變更指令 chgrp chown chmod](#權限變更指令-chgrp-chown-chmod)
+    - [chgrp指令說明](#chgrp指令說明)
+    - [chown指令說明](#chown指令說明)
+    - [chmod指令說明](#chmod指令說明)
 - [系統服務](#系統服務)
-    - [加載/啟動/重啟 系統服務](#加載啟動重啟-系統服務)
+  - [加載/啟動/重啟 系統服務](#加載啟動重啟-系統服務)
 
 <!-- /TOC -->
 
@@ -167,7 +167,7 @@ categories: linux
 ~ $ ssh-copy-id [-i [identity_file]] [user@]server_hostname #-i: 指定公鑰文件
 
 #範例:
-~ $ ssh-copy-id -i ~/.ssh/id_rsa.pub [user@]server_hostname 
+~ $ ssh-copy-id -i ~/.ssh/id_rsa.pub [user@]server_hostname
 ```
 
 #### ssh-add指令說明
@@ -217,7 +217,7 @@ scp [帳號@來源主機]:來源檔案 [帳號@目的主機]:目的檔案
 2. [rwx] 擁有者的權限
 3. [r-x] 群組的權限
 4. [r--] 其他非群組內使用者的權限
-   
+
 > [rwx] 分別代表: 讀(read) / 寫(write) / 執行(execute), [-] 表示沒有權限
 
 ### 權限轉換方式
@@ -277,7 +277,7 @@ Options:
 ~ $ ls -l
 -rw-r--r--  1 root users 68495 Jun 25 08:53 test-file.txt
 
-~ $ chgrp testing 
+~ $ chgrp testing
 chgrp: invalid group name `testing' #發生錯誤,  沒有testing這個群組
 ```
 
